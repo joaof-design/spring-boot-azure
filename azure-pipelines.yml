@@ -52,3 +52,8 @@ stages:
       inputs:
         Contents: 'aks-deploy-from-acr.yaml'
         TargetFolder: '$(build.artifactstagingdirectory)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
