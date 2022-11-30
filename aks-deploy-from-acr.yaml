@@ -1,1 +1,39 @@
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-springboot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-app
+  template:
+    metadata:
+      labels:
+        app: spring-boot-azure
+    spec:
+      containers:
+      - name: my-spring-boot-azure
+        image: myacrrepo4321.azurecr.io/akannan1087/springboot-app:#{Build.BuildId}#
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8085
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: spring-boot-azure
+    k8s-app: spring-boot-azure
+  name: spring-boot-azure
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8085
+  type: LoadBalancer
+  selector:
+    app: spring-boot-azure
