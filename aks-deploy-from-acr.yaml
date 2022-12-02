@@ -37,3 +37,18 @@ spec:
   type: LoadBalancer
   selector:
     app: spring-boot-azure
+    
+---
+kind: Ingress
+metadata:
+  name: spring-boot-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /expose
+          backend:
+            serviceName: spring-boot-azure
+            servicePort: 8085
