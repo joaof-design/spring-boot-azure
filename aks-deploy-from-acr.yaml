@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-spring-boot-azure
-        image: azurecontainer99.azurecr.io/joaof-design/spring-boot-azure:#(Build.BuildId)
+        image: azurecontainer99.azurecr.io/joaof-design/spring-boot-azure:$(Build.BuildId)
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
