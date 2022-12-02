@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-spring-boot-azure
-        image: azurecontainer99.azurecr.io/joaof-design/spring-boot-azure:34
+        image: azurecontainer99.azurecr.io/joaof-design/spring-boot-azure:35
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
@@ -50,8 +50,9 @@ spec:
   - http:
       paths:
         - path: /expose
+          pathType: Prefix
           backend:
-          service:
-            name: spring-boot-azure
-            port:
-              number: 8085
+            service:
+              name: spring-boot-azure
+              port:
+                number: 8085
