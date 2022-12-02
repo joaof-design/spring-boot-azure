@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-spring-boot-azure
-        image: azurecontainer99.azurecr.io/joaof-design/spring-boot-azure:32
+        image: azurecontainer99.azurecr.io/joaof-design/spring-boot-azure:33
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
@@ -39,12 +39,12 @@ spec:
     app: spring-boot-azure
     
 ---
-apiVersion: v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: spring-boot-ingress
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - http:
