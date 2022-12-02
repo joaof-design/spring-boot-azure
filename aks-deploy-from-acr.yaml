@@ -51,5 +51,7 @@ spec:
       paths:
         - path: /expose
           backend:
-            serviceName: spring-boot-azure
-            servicePort: 8085
+          service:
+            name: spring-boot-azure
+            port:
+              number: 8085
