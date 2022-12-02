@@ -39,6 +39,7 @@ spec:
     app: spring-boot-azure
     
 ---
+apiVersion: v1
 kind: Ingress
 metadata:
   name: spring-boot-ingress
